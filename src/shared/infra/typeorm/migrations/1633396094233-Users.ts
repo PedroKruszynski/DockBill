@@ -1,5 +1,5 @@
 import {
-  MigrationInterface, QueryRunner, Table, TableIndex,
+  MigrationInterface, QueryRunner, Table, TableIndex, TableCheck,
 } from 'typeorm';
 
 export default class Users1633396094233 implements MigrationInterface {
@@ -21,6 +21,19 @@ export default class Users1633396094233 implements MigrationInterface {
             isUnique: true,
           },
           {
+            name: 'name',
+            type: 'varchar',
+          },
+          {
+            name: 'cpf',
+            type: 'varchar',
+            isUnique: true,
+          },
+          {
+            name: 'birthDate',
+            type: 'date',
+          },
+          {
             name: 'created_at',
             type: 'timestamp',
             default: 'now()',
@@ -33,6 +46,11 @@ export default class Users1633396094233 implements MigrationInterface {
         ],
       }),
     );
+
+    await queryRunner.createCheckConstraint('users', new TableCheck({
+      columnNames: ['birthDate'],
+      expression: '"birthDate" < now()',
+    }));
 
     await queryRunner.createIndex('users', new TableIndex({
       name: 'INDEX_USER_EMAIL',
