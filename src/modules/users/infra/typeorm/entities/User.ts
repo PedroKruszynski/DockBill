@@ -4,15 +4,26 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  Check,
 } from 'typeorm';
 
 @Entity('users')
+@Check('"birthDate" < now()')
 class User {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
-    @Column()
+    @Column({ unique: true })
     email: string;
+
+    @Column()
+    name: string;
+
+    @Column({ unique: true })
+    cpf: string;
+
+    @Column()
+    birthDate: Date;
 
     @CreateDateColumn()
     created_at: Date;
