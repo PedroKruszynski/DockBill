@@ -8,6 +8,7 @@ interface IAccountsRepository {
     create(data: ICreateAccountDTO): Promise<Account>;
     save(account: Account): Promise<Account>;
     withdraw(account: Account, value: string): Promise<Account>;
+    deposit(account: Account, value: string): Promise<Account>;
 }
 
 export default IAccountsRepository;

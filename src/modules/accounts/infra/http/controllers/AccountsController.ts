@@ -5,6 +5,7 @@ import CreateAccountsService from '@modules/accounts/services/CreateAccountServi
 import GetBalanceService from '@modules/accounts/services/GetBalanceService';
 import BlockAccountService from '@modules/accounts/services/BlockAccountService';
 import WithdrawService from '@modules/accounts/services/WithdrawService';
+import DepositService from '@modules/accounts/services/DepositService';
 
 export default class UsersController {
   public async create(
@@ -67,6 +68,22 @@ export default class UsersController {
     const withdrawService = container.resolve(WithdrawService);
 
     const account = await withdrawService.execute({
+      idAccount,
+      value,
+    });
+
+    return response.json(account);
+  }
+
+  public async deposit(
+    request: Request,
+    response: Response,
+  ): Promise<Response> {
+    const { idAccount, value } = request.body;
+
+    const depositService = container.resolve(DepositService);
+
+    const account = await depositService.execute({
       idAccount,
       value,
     });
