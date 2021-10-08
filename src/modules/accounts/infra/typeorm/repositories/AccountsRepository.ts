@@ -50,7 +50,20 @@ class AccountsRepository implements IAccountsRepository {
       { balance: value },
     );
 
-    return account;
+    const newAccount = await this.ormRepository.findOne({ id: account.id }) ?? account;
+
+    return newAccount;
+  }
+
+  public async deposit(account: Account, value: string): Promise<Account> {
+    await this.ormRepository.update(
+      account.id,
+      { balance: value },
+    );
+
+    const newAccount = await this.ormRepository.findOne({ id: account.id }) ?? account;
+
+    return newAccount;
   }
 }
 
