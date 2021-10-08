@@ -6,7 +6,8 @@ interface IAccountsRepository {
     findByIdUser(idUser: string): Promise<Account | undefined>;
     blockAccount(idAccount: string): Promise<number>;
     create(data: ICreateAccountDTO): Promise<Account>;
-    save(user: Account): Promise<Account>;
+    save(account: Account): Promise<Account>;
+    withdraw(account: Account, value: string): Promise<Account>;
 }
 
 export default IAccountsRepository;

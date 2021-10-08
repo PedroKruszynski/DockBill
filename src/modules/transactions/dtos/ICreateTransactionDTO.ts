@@ -1,6 +1,6 @@
 interface ICreateTransactionDTO {
   idAccount: string;
-  value: number;
+  value: string;
 }
 
 export default ICreateTransactionDTO;
