@@ -11,5 +11,6 @@ AccountsRouter.use(ensureAuthenticated);
 AccountsRouter.post('/', accountsController.create);
 AccountsRouter.get('/balance/:idAccount', accountsController.getBalance);
 AccountsRouter.patch('/block/:idAccount', accountsController.blockAccount);
+AccountsRouter.patch('/withdraw', accountsController.withdraw);
 
 export default AccountsRouter;

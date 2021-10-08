@@ -4,6 +4,7 @@ import { container } from 'tsyringe';
 import CreateAccountsService from '@modules/accounts/services/CreateAccountService';
 import GetBalanceService from '@modules/accounts/services/GetBalanceService';
 import BlockAccountService from '@modules/accounts/services/BlockAccountService';
+import WithdrawService from '@modules/accounts/services/WithdrawService';
 
 export default class UsersController {
   public async create(
@@ -52,6 +53,22 @@ export default class UsersController {
 
     const account = await blockAccount.execute({
       idAccount,
+    });
+
+    return response.json(account);
+  }
+
+  public async withdraw(
+    request: Request,
+    response: Response,
+  ): Promise<Response> {
+    const { idAccount, value } = request.body;
+
+    const withdrawService = container.resolve(WithdrawService);
+
+    const account = await withdrawService.execute({
+      idAccount,
+      value,
     });
 
     return response.json(account);

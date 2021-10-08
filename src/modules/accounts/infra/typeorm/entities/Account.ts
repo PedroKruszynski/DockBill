@@ -15,7 +15,7 @@ class Account {
     idUser: string;
 
     @Column({ type: 'money' })
-    balance: number;
+    balance: string;
 
     @Column({ type: 'money' })
     withdrawalsDailyLimit: number;

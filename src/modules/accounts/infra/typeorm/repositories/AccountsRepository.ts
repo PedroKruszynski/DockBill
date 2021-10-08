@@ -43,6 +43,15 @@ class AccountsRepository implements IAccountsRepository {
 
     return update.affected as number;
   }
+
+  public async withdraw(account: Account, value: string): Promise<Account> {
+    await this.ormRepository.update(
+      account.id,
+      { balance: value },
+    );
+
+    return account;
+  }
 }
 
 export default AccountsRepository;
