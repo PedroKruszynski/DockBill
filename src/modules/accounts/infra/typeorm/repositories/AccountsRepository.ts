@@ -18,6 +18,12 @@ class AccountsRepository implements IAccountsRepository {
     return account;
   }
 
+  public async findByIdOnlyActive(id: string): Promise<Account | undefined> {
+    const account = await this.ormRepository.findOne({ id, active: true });
+
+    return account;
+  }
+
   public async findByIdUser(idUser: string): Promise<Account | undefined> {
     const account = await this.ormRepository.findOne({ where: { idUser } });
 
