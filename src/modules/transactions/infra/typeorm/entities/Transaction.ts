@@ -13,8 +13,8 @@ class Transaction {
   @Column({ type: 'uuid' })
   idAccount: string;
 
-  @Column()
-  value: number;
+  @Column({ type: 'money' })
+  value: string;
 
   @CreateDateColumn()
   created_at: Date;
