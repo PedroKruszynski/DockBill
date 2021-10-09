@@ -16,7 +16,8 @@ COPY src /app/src
 RUN ls -a
 
 RUN npm install
+RUN npm run-script build
 
 EXPOSE 3333
 
-CMD [ "npm", "run-script", "dev:server" ]
+CMD [ "npm", "run-script", "start" ]

@@ -40,7 +40,9 @@ export default class Transactions1633639072317 implements MigrationInterface {
 
   public async down(queryRunner: QueryRunner): Promise<void> {
     const table = await queryRunner.getTable('transactions') as Table;
-    const foreignKey = table.foreignKeys.find((fk) => fk.columnNames.indexOf('idAccount') !== -1) as TableForeignKey;
+    const foreignKey = table.foreignKeys.find(
+      (fk) => fk.columnNames.indexOf('idAccount') !== -1,
+    ) as TableForeignKey;
     await queryRunner.dropForeignKey('transactions', foreignKey);
     await queryRunner.dropColumn('transactions', 'idAccount');
     await queryRunner.dropTable('transactions');
