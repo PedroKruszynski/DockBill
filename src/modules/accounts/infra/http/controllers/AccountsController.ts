@@ -7,7 +7,7 @@ import BlockAccountService from '@modules/accounts/services/BlockAccountService'
 import WithdrawService from '@modules/accounts/services/WithdrawService';
 import DepositService from '@modules/accounts/services/DepositService';
 
-export default class UsersController {
+export default class AccountsController {
   public async create(
     request: Request,
     response: Response,
