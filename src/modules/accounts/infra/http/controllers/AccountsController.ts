@@ -13,7 +13,7 @@ export default class AccountsController {
     response: Response,
   ): Promise<Response> {
     const {
-      idUser, balance, withdrawalsDailyLimit, active, typeAccount,
+      idUser, balance, withdrawDailyLimit, active, typeAccount,
     } = request.body;
 
     const createAccount = container.resolve(CreateAccountsService);
@@ -21,7 +21,7 @@ export default class AccountsController {
     const account = await createAccount.execute({
       idUser,
       balance,
-      withdrawalsDailyLimit,
+      withdrawDailyLimit,
       active,
       typeAccount,
     });

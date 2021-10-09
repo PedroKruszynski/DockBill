@@ -1,7 +1,7 @@
 import { injectable, inject } from 'tsyringe';
 
 import AppError from '@shared/errors/AppError';
-import IAccountsRepository from '@modules/accounts/infra/typeorm/repositories/AccountsRepository';
+import IAccountsRepository from '@modules/accounts/repositories/IAccountsRepository';
 import ITransactionsRepository from '../repositories/ITransactionsRepository';
 import Transaction from '../infra/typeorm/entities/Transaction';
 import IExtractDTO from '../dtos/IExtractDTO';

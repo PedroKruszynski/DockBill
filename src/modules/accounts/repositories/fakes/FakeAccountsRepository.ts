@@ -15,7 +15,13 @@ class FakeAccountsRepository implements IAccountsRepository {
     }
 
     public async findByIdOnlyActive(idUser: string): Promise<Account | undefined> {
-      const findAccount = this.accounts.find((account) => account.idUser === idUser && account.active === true);
+      const findAccount = this.accounts.find((account) => account.id === idUser && account.active === true);
+
+      return findAccount;
+    }
+
+    public async findByIdUser(idUser: string): Promise<Account | undefined> {
+      const findAccount = this.accounts.find((account) => account.idUser === idUser);
 
       return findAccount;
     }
@@ -49,6 +55,28 @@ class FakeAccountsRepository implements IAccountsRepository {
       }
 
       return 0;
+    }
+
+    public async withdraw(accountParam: Account, value: string): Promise<Account> {
+      const findAccount = this.accounts.find((account) => account.id === accountParam.id);
+
+      if (findAccount) {
+        findAccount.balance = value;
+        return findAccount;
+      }
+
+      return findAccount ?? accountParam;
+    }
+
+    public async deposit(accountParam: Account, value: string): Promise<Account> {
+      const findAccount = this.accounts.find((account) => account.id === accountParam.id);
+
+      if (findAccount) {
+        findAccount.balance = value;
+        return findAccount;
+      }
+
+      return findAccount ?? accountParam;
     }
 }
 

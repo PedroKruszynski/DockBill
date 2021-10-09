@@ -18,7 +18,7 @@ class Account {
     balance: string;
 
     @Column({ type: 'money' })
-    withdrawalsDailyLimit: number;
+    withdrawDailyLimit: string;
 
     @Column({ type: 'boolean' })
     active: boolean;
