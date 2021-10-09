@@ -38,7 +38,8 @@ class WithdrawService {
     }
 
     const account = await this.accountsRepository.withdraw(
-      accountExist, this.currencyProvider.subtract(accountExist.balance, value),
+      accountExist,
+      this.currencyProvider.subtract(accountExist.balance, value),
     );
     const transaction = await this.transactionsRepository.create({
       idAccount,

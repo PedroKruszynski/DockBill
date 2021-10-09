@@ -13,8 +13,8 @@ describe('CreateAccount', () => {
 
     const account = await createAccount.execute({
       idUser: '2b0b152c-5f84-43a2-95ba-95fda119273b',
-      balance: 500,
-      withdrawalsDailyLimit: 500,
+      balance: '500',
+      withdrawDailyLimit: '500',
       active: true,
       typeAccount: 1,
     });
@@ -31,8 +31,8 @@ describe('CreateAccount', () => {
 
     await createAccount.execute({
       idUser: '2b0b152c-5f84-43a2-95ba-95fda119273b',
-      balance: 500,
-      withdrawalsDailyLimit: 500,
+      balance: '500',
+      withdrawDailyLimit: '500',
       active: true,
       typeAccount: 1,
     });
@@ -40,8 +40,8 @@ describe('CreateAccount', () => {
     expect(
       createAccount.execute({
         idUser: '2b0b152c-5f84-43a2-95ba-95fda119273b',
-        balance: 500,
-        withdrawalsDailyLimit: 500,
+        balance: '500',
+        withdrawDailyLimit: '500',
         active: true,
         typeAccount: 1,
       }),

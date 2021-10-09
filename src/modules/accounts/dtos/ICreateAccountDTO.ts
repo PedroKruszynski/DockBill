@@ -1,7 +1,7 @@
 interface ICreateAccountDTO {
   idUser: string;
   balance: string;
-  withdrawalsDailyLimit: number;
+  withdrawDailyLimit: string;
   active: boolean;
   typeAccount: number;
 }

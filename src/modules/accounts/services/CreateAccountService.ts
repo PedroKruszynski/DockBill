@@ -6,8 +6,8 @@ import IAccountsRepository from '../repositories/IAccountsRepository';
 
 interface IRequest {
   idUser: string;
-  balance: number;
-  withdrawalsDailyLimit: number;
+  balance: string;
+  withdrawDailyLimit: string;
   active: boolean;
   typeAccount: number;
 }
@@ -22,7 +22,7 @@ class CreateAccountService {
   }
 
   public async execute({
-    idUser, balance, withdrawalsDailyLimit, active, typeAccount,
+    idUser, balance, withdrawDailyLimit, active, typeAccount,
   }: IRequest): Promise<Account> {
     const checkAccountUserExist = await this.accountsRepository.findByIdUser(idUser);
 
@@ -33,7 +33,7 @@ class CreateAccountService {
     const user = await this.accountsRepository.create({
       idUser,
       balance,
-      withdrawalsDailyLimit,
+      withdrawDailyLimit,
       active,
       typeAccount,
     });
