@@ -14,8 +14,8 @@ class FakeAccountsRepository implements IAccountsRepository {
       return findAccount;
     }
 
-    public async findByIdUser(idUser: string): Promise<Account | undefined> {
-      const findAccount = this.accounts.find((account) => account.idUser === idUser);
+    public async findByIdOnlyActive(idUser: string): Promise<Account | undefined> {
+      const findAccount = this.accounts.find((account) => account.idUser === idUser && account.active === true);
 
       return findAccount;
     }

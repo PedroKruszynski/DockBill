@@ -8,7 +8,7 @@ interface IRequest {
 }
 
 interface IReturn {
-  balance: number;
+  balance: string;
 }
 
 @injectable()
@@ -23,10 +23,10 @@ class GetBalanceService {
   public async execute({
     idAccount,
   }: IRequest): Promise<IReturn> {
-    const checkAccountExist = await this.accountsRepository.findById(idAccount);
+    const checkAccountExist = await this.accountsRepository.findByIdOnlyActive(idAccount);
 
     if (!checkAccountExist) {
-      throw new AppError("Account don't exist");
+      throw new AppError("Account don't exist or are blocked");
     }
 
     return {

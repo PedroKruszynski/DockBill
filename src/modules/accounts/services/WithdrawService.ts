@@ -27,11 +27,12 @@ class WithdrawService {
   }
 
   public async execute({ idAccount, value }: IRequest): Promise<Account> {
-    const accountExist = await this.accountsRepository.findById(idAccount);
+    const accountExist = await this.accountsRepository.findByIdOnlyActive(idAccount);
 
     if (!accountExist) {
-      throw new AppError("Account don't exist");
+      throw new AppError("Account don't exist or are blocked");
     }
+
     if (this.currencyProvider.isLessThan(accountExist.balance, value)) {
       throw new AppError("Account don't have enough balance");
     }
