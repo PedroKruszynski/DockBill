@@ -14,7 +14,9 @@
 - [Architecture](https://github.com/PedroKruszynski/DockBill#Architecture)
   - [Modules Folder](https://github.com/PedroKruszynski/DockBill#modules)
   - [Shared Folder](https://github.com/PedroKruszynski/DockBill#shared)
+- [Amazon AWS](https://github.com/PedroKruszynski/DockBill#amazon-aws)
 - [API](https://github.com/PedroKruszynski/DockBill#api-endpoints)
+
 
 ## Introduction
 
@@ -135,6 +137,12 @@ Json for Insomnia
 - **Errors** are interfaces for define a default error of the api
 
 - **Infra** folder are for the **Http** folder, that folde define all **Routes** and start the api server; also have a typeorm folder inside have a config folder for the configuration of the database, a **Migrations** folder the database execute
+
+## Amazon Aws
+
+You can access a version of the api on that link
+
+- [AWS](http://18.224.55.207:3333/) - Api
 
 ### Thank you! :)
 
