@@ -1,11 +1,10 @@
-
-FROM node:14
+FROM node:14 as base
 
 # create root application folder
 WORKDIR /app
 
 # copy configs to /app folder
-COPY package*.json ./
+COPY package.json ./
 COPY tsconfig.json ./
 COPY .env ./
 
@@ -16,8 +15,7 @@ COPY src /app/src
 RUN ls -a
 
 RUN npm install
-RUN npm run-script build
 
-EXPOSE 3333
+FROM base as production
 
-CMD [ "npm", "run-script", "start" ]
+RUN npm run build
